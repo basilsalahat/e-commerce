@@ -1,0 +1,133 @@
+@use "colors";
+@use "variables";
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 7vw;
+  border-bottom: 1px solid rgba(211, 211, 211, 0.5);
+  img {
+    cursor: pointer;
+  }
+  &__leftSide,
+  &__rightSide {
+    display: flex;
+  }
+  &__leftSide {
+    align-items: baseline;
+  }
+  &__rightSide {
+    align-items: center;
+  }
+  &__links {
+    display: none;
+  }
+  &__cart {
+    width: 18px;
+    height: 18px;
+  }
+
+  &__sideMenu {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: colors.$lightbox-background;
+    &.active {
+      left: 0;
+    }
+  }
+  &__sideMenulinks {
+    list-style: none;
+    background-color: colors.$main-background;
+    width: 100%;
+    max-width: 150px;
+    height: 100%;
+    margin: 0;
+    padding: 26px;
+    li {
+      cursor: pointer;
+      padding: 8px 0;
+      a {
+        text-decoration: none;
+        color: black;
+        font-weight: 700;
+      }
+    }
+  }
+  &__cartMenu {
+    width: 100%;
+    height: 100%;
+    background-color: colors.$lightbox-background;
+    position: absolute;
+    top: 0;
+    display: none;
+    right: 100%;
+    opacity: 0;
+    &.active {
+      display: flex;
+      justify-content: flex-end;
+      right: 0;
+      opacity: 1;
+    }
+  }
+  &__cartItems {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: colors.$main-background;
+    width: 100%;
+    max-width: 316px;
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      border-bottom: 1px solid rgba(211, 211, 211, 0.5);
+      padding: 0 16px;
+    }
+  }
+  &__items {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+} // nav end
+
+// Media Queries
+@media only screen and (min-width: variables.$desktop) {
+  .nav {
+    padding: 0 16vw;
+    &__links {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      padding-left: 25px;
+      li {
+        padding: 30px 12px;
+        a {
+          text-decoration: none;
+          color: colors.$small-text-color;
+          padding: 25px 0;
+          &:hover {
+            border-bottom: 5px solid colors.$main-color;
+            color: black;
+          }
+        }
+      }
+    }
+    &__menuButton {
+      display: none;
+    }
+    &__leftSide {
+      align-items: center;
+    }
+  }
+}

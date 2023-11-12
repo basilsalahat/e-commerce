@@ -6,6 +6,64 @@
     <title>sneakers</title>
     <link rel="stylesheet" href="style/main.css" />
   </head>
-  <body></body>
+  <body>
+    <div class="nav">
+      <div class="nav__leftSide">
+        <img
+          src="imgs/icon-menu.svg"
+          alt="icon-menu"
+          class="nav__menuButton margin-left-right"
+          onclick="showSideMenu()"
+        />
+        <img src="imgs/logo.svg" alt="logo" class="nav__logo" />
+        <ul class="nav__links">
+          <li><a href="#">Collection</a></li>
+          <li><a href="#">Men</a></li>
+          <li><a href="#">Woman</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="nav__sideMenu" id="nav__sideMenu">
+          <ul class="nav__sideMenulinks">
+            <li class="nav__iconClose">
+              <img
+                src="imgs/icon-close.svg"
+                alt="icon-close"
+                onclick="hideSideMenu()"
+              />
+            </li>
+            <li><a href="#">Collection</a></li>
+            <li><a href="#">Men</a></li>
+            <li><a href="#">Woman</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="nav__rightSide">
+        <img
+          src="imgs/icon-cart.svg"
+          alt="icon-cart"
+          class="nav__cart margin-left-right"
+          onclick="showCartMenu()"
+        />
+        <div class="nav__cartMenu" id="nav__cartMenu">
+          <div class="nav__cartItems">
+            <header>
+              <p>Cart</p>
+              <img
+                src="imgs/icon-close.svg"
+                alt="icon-close"
+                onclick="hideCartMenu()"
+              />
+            </header>
+            <div class="nav__items">
+              <p>Your cart is empty.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script/script.js"></script>
+  </body>
 </html>
-<script src="script/script.js"></script>
