@@ -1,9 +1,9 @@
-function sideMenu() {
+function toggleSideMenu() {
   var sideMenu = document.getElementById("side-menu");
   sideMenu.classList.toggle("active");
 }
 
-function cartMenu() {
+function toggleCartMenu() {
   var cartMenu = document.getElementById("nav__cartMenu");
   cartMenu.classList.toggle("active");
 }

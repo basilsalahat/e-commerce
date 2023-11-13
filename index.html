@@ -13,7 +13,7 @@
           src="imgs/icon-menu.svg"
           alt="icon-menu"
           class="nav__menuButton margin-left-right"
-          onclick="sideMenu()"
+          onclick="toggleSideMenu()"
         />
         <img src="imgs/logo.svg" alt="logo" class="nav__logo" />
         <ul class="nav__links">
@@ -29,7 +29,7 @@
               <img
                 src="imgs/icon-close.svg"
                 alt="icon-close"
-                onclick="sideMenu()"
+                onclick="toggleSideMenu()"
               />
             </li>
             <li><a href="#">Collection</a></li>
@@ -45,7 +45,7 @@
           src="imgs/icon-cart.svg"
           alt="icon-cart"
           class="nav__cart margin-left-right"
-          onclick="cartMenu()"
+          onclick="toggleCartMenu()"
         />
         <div class="nav__cartMenu" id="nav__cartMenu">
           <div class="nav__cartItems">
@@ -54,7 +54,7 @@
               <img
                 src="imgs/icon-close.svg"
                 alt="icon-close"
-                onclick="cartMenu()"
+                onclick="toggleCartMenu()"
               />
             </header>
             <div class="nav__items">
