@@ -5,7 +5,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 7vw;
+  padding: 0 10vw;
+  height: 80px;
   border-bottom: 1px solid rgba(211, 211, 211, 0.5);
   img {
     cursor: pointer;
@@ -35,6 +36,7 @@
     width: 100%;
     height: 100%;
     background-color: colors.$overlay-background;
+    z-index: 1;
     &.active {
       left: 0;
     }
@@ -63,6 +65,7 @@
     background-color: colors.$overlay-background;
     position: absolute;
     top: 0;
+    z-index: 1;
     display: none;
     right: 100%;
     opacity: 0;
