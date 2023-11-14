@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style/main.css" />
   </head>
   <body>
-    <div class="nav">
+    <div class="nav" id="nav">
       <div class="nav__leftSide">
         <img
           src="imgs/icon-menu.svg"
@@ -60,6 +60,88 @@
             <div class="nav__items">
               <p>Your cart is empty.</p>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="product" id="product">
+      <div class="product__photos">
+        <div class="product__expandedImage">
+          <img
+            src="imgs/image-product-1.jpg"
+            alt="expanded image"
+            id="product-expanded-image"
+          />
+        </div>
+        <div class="product__slide fade">
+          <img
+            src="imgs/image-product-1.jpg"
+            alt="image-product-1"
+            onclick="changeExpandedImg(this)"
+          />
+        </div>
+        <div class="product__slide fade">
+          <img
+            src="imgs/image-product-2.jpg"
+            alt="image-product-2"
+            onclick="changeExpandedImg(this)"
+          />
+        </div>
+        <div class="product__slide fade">
+          <img
+            src="imgs/image-product-3.jpg"
+            alt="image-product-3"
+            onclick="changeExpandedImg(this)"
+          />
+        </div>
+        <div class="product__slide fade">
+          <img
+            src="imgs/image-product-4.jpg"
+            alt="image-product-4"
+            onclick="changeExpandedImg(this)"
+          />
+        </div>
+        <div class="product__next" onclick="changeSlide(1)">
+          <img src="imgs/icon-next.svg" alt="icon-next" />
+        </div>
+        <div class="product__previous" onclick="changeSlide(-1)">
+          <img src="imgs/icon-previous.svg" alt="icon-previous" />
+        </div>
+      </div>
+      <div class="product__details">
+        <p class="product__coName">sneakers company</p>
+        <h2 class="product__title">fall limited edition sneakers</h2>
+        <p class="product__description">
+          These low-profile sneakers are your perfect casual wear companion.
+          Featuring a durable rubber outer sole, they'll withstand everything
+          the weather can offer.
+        </p>
+        <div class="product__priceDetails">
+          <p class="product__price">$125.00</p>
+          <p class="product__discount">50%</p>
+          <p class="product__originalPrice">$250.00</p>
+        </div>
+        <div class="product__countToBuy">
+          <div class="product__counter">
+            <img
+              src="imgs/icon-minus.svg"
+              alt="icon-minus"
+              onclick="decreseCount()"
+            />
+            <p class="product__count" id="product-count">0</p>
+            <img
+              src="imgs/icon-plus.svg"
+              alt="icon-plus"
+              onclick="increseCount()"
+            />
+          </div>
+          <div class="product__addToCart">
+            <img
+              src="imgs/icon-cart-white.svg"
+              alt="icon-cart"
+              class="margin-left-right"
+            />
+            <p>Add to cart</p>
           </div>
         </div>
       </div>
