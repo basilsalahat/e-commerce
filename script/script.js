@@ -14,20 +14,6 @@ window.addEventListener("resize", function hideMenuOnResize() {
   }
 });
 
-window.addEventListener("load", function () {
-  var navHeight = document.getElementById("nav").offsetHeight;
-  var windowHeight = this.window.innerHeight;
-  var productElem = document.getElementById("product");
-  productElem.style.height = windowHeight - navHeight + "px";
-});
-
-window.addEventListener("resize", function () {
-  var navHeight = document.getElementById("nav").offsetHeight;
-  var windowHeight = this.window.innerHeight;
-  var productElem = document.getElementById("product");
-  productElem.style.height = windowHeight - navHeight + "px";
-});
-
 function increseCount() {
   var count = document.getElementById("product-count");
   count.innerHTML = parseInt(count.innerHTML) + 1;
@@ -35,7 +21,7 @@ function increseCount() {
 
 function decreseCount() {
   var count = document.getElementById("product-count");
-  if (parseInt(count.innerHTML) != 0) {
+  if (parseInt(count.innerHTML) > 0) {
     count.innerHTML = parseInt(count.innerHTML) - 1;
   }
 }
