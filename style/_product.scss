@@ -97,6 +97,9 @@
   &__price {
     font-size: xx-large;
   }
+  &__id {
+    display: none;
+  }
   &__discount {
     background-color: colors.$color-primary-light;
     padding: 4px 8px;
@@ -148,7 +151,7 @@
       font-weight: 700;
       color: white;
     }
-    &:hover {
+    &:not(.disabled):hover {
       opacity: 50%;
     }
     img {

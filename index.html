@@ -50,16 +50,17 @@
         <div class="nav__cartMenu" id="nav__cartMenu">
           <div class="nav__cartItems">
             <header>
-              <p>Cart</p>
+              <p>Your Cart</p>
               <img
                 src="imgs/icon-close.svg"
                 alt="icon-close"
                 onclick="toggleCartMenu()"
               />
             </header>
-            <div class="nav__items">
-              <p>Your cart is empty.</p>
+            <div class="nav__items empty" id="nav-items">
+              <p class="nav__emptyCart">Your cart is empty.</p>
             </div>
+            <button class="nav__checkOutButton disabled">checkout</button>
           </div>
         </div>
       </div>
@@ -110,16 +111,21 @@
       </div>
       <div class="product__details">
         <p class="product__coName">sneakers company</p>
-        <h2 class="product__title">fall limited edition sneakers</h2>
+        <h2 class="product__title" id="product-name">
+          fall limited edition sneakers
+        </h2>
         <p class="product__description">
           These low-profile sneakers are your perfect casual wear companion.
           Featuring a durable rubber outer sole, they'll withstand everything
           the weather can offer.
         </p>
         <div class="product__priceDetails">
-          <p class="product__price">$125.00</p>
-          <p class="product__discount">50%</p>
-          <p class="product__originalPrice">$250.00</p>
+          <p class="product__id" id="product-id">12345</p>
+          <p class="product__price" id="product-price">$125.00</p>
+          <p class="product__discount" id="product-discount">50%</p>
+          <p class="product__originalPrice" id="product-original-price">
+            $250.00
+          </p>
         </div>
         <div class="product__countToBuy">
           <div class="product__counter">
@@ -135,7 +141,11 @@
               onclick="increseCount()"
             />
           </div>
-          <div class="product__addToCart">
+          <div
+            class="product__addToCart disabled"
+            id="add-to-cart"
+            onclick="addCurrentItemToCart()"
+          >
             <img
               src="imgs/icon-cart-white.svg"
               alt="icon-cart"
