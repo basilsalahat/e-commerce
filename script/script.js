@@ -18,7 +18,7 @@ function increseCount() {
   var count = document.getElementById("product-count");
   var addToCartButton = document.getElementById("add-to-cart");
   count.innerHTML = parseInt(count.innerHTML) + 1;
-  addToCartButton.setAttribute("onclick", "addCurrentItemToCart()");
+  addToCartButton.addEventListener("click", addCurrentItemToCart);
   addToCartButton.classList.remove("disabled");
 }
 
@@ -27,11 +27,10 @@ function decreseCount() {
   var addToCartButton = document.getElementById("add-to-cart");
   if (parseInt(count.innerHTML) > 0) {
     count.innerHTML = parseInt(count.innerHTML) - 1;
-    addToCartButton.setAttribute("onclick", "addCurrentItemToCart()");
-    if (parseInt(count.innerHTML) == 0) {
-      addToCartButton.classList.add("disabled");
-      addToCartButton.setAttribute("onclick", "");
-    }
+  }
+  if (parseInt(count.innerHTML) == 0) {
+    addToCartButton.classList.add("disabled");
+    addToCartButton.removeEventListener("click", addCurrentItemToCart);
   }
 }
 
@@ -84,7 +83,7 @@ function changeExpandedImg(img) {
   expandImg.src = img.src;
 }
 
-//  Cart items section
+// ---------------------------  Cart items section  --------------------------- //
 var items = [];
 
 window.addEventListener("load", retriveItemsFromLS());
@@ -96,14 +95,7 @@ function retriveItemsFromLS() {
   if (itemsFromStorage != null) {
     cartItemsCountainer.classList.remove("empty");
     itemsFromStorage.forEach((element) => {
-      items.push([
-        element[0],
-        element[1],
-        element[2],
-        element[3],
-        element[4],
-        element[5],
-      ]);
+      items.push(element);
     });
     fillItems();
   } else {
@@ -121,14 +113,7 @@ function fillItems() {
   if (items.length > 0) {
     checkOutButton.classList.remove("disabled");
     items.forEach((element) => {
-      createNewItem(
-        element[0],
-        element[1],
-        element[2],
-        element[3],
-        element[4],
-        element[5]
-      );
+      createNewItem(element);
     });
   } else {
     checkOutButton.classList.add("disabled");
@@ -151,48 +136,41 @@ function addCurrentItemToCart() {
     .getElementById("product-expanded-image")
     .getAttribute("src");
 
-  if (items.find((element) => element[0] == productID)) {
+  if (items.find((element) => element.productID == productID)) {
     alert("Product Already added in Cart");
     return;
   } else {
-    items.push([
-      productID,
-      productName.trim(),
-      productPrice,
-      productOridinalPrice.trim(),
-      productCount,
-      productImage,
-    ]);
+    items.push({
+      productID: productID,
+      productName: productName.trim(),
+      productPrice: productPrice,
+      productOridinalPrice: productOridinalPrice.trim(),
+      productCount: productCount,
+      productImage: productImage,
+    });
     var itemsConverted = JSON.stringify(items);
     localStorage.setItem("cart-items", itemsConverted);
     fillItems();
   }
 }
 
-function createNewItem(
-  productID,
-  productName,
-  productPrice,
-  productOridinalPrice,
-  productCount,
-  productImage
-) {
+function createNewItem(itemDetails) {
   var itemsContainer = document.getElementById("nav-items");
   const newItem = document.createElement("div");
   newItem.classList.add("nav__item");
   newItem.innerHTML =
     "<img src=" +
-    productImage +
+    itemDetails.productImage +
     ' alt="image-product" class="nav__cartItemPhoto" /> <div class="nav__cartItemDetails"> <p class="name">' +
-    productName +
+    itemDetails.productName +
     ' <p class="originalPrice">' +
-    productOridinalPrice +
+    itemDetails.productOridinalPrice +
     '</p><p class="price">' +
-    productPrice +
+    itemDetails.productPrice +
     '</p> <p class="id" style = "display:none">' +
-    productID +
+    itemDetails.productID +
     '</p> </div> <div class="nav__cartItemNumberOfOrders"> <button class="nav__deleteItemFromCart"> <img src="imgs/icon-delete.svg" alt="icon-delete" class="delete-from-cart" onclick = "deleteFromCart(this) "/> </button> <div class="nav__cartItemCounter"> <img src="imgs/icon-minus.svg" alt="icon-minus" onclick = "changeCartCount(this,-1)" /> <p class="nav__numOfItem">' +
-    productCount +
+    itemDetails.productCount +
     '</p> <img src="imgs/icon-plus.svg" alt="icon-plus" onclick = "changeCartCount(this,+1)" /> </div> </div>';
   itemsContainer.appendChild(newItem);
 }
@@ -203,17 +181,17 @@ function changeCartCount(item, action) {
 
   if (action == +1) {
     for (var i = 0; i < items.length; i++) {
-      if (items[i][0] == productId) {
-        items[i][4] = parseInt(items[i][4]) + 1;
+      if (items[i].productID == productId) {
+        items[i].productCount = parseInt(items[i].productCount) + 1;
       }
     }
   } else {
     for (var i = 0; i < items.length; i++) {
-      if (items[i][0] == productId) {
-        if (items[i][4] > 1) {
-          items[i][4] = parseInt(items[i][4]) - 1;
+      if (items[i].productID == productId) {
+        if (items[i].productCount > 1) {
+          items[i].productCount = parseInt(items[i].productCount) - 1;
         } else {
-          items[i][4] = 1;
+          items[i].productCount = 1;
         }
       }
     }
@@ -228,7 +206,7 @@ function deleteFromCart(item) {
 
   if (confirm("Are you sure you want to delete this product?")) {
     for (var i = 0; i < items.length; i++) {
-      if (items[i][0] == productId) {
+      if (items[i].productID == productId) {
         items.splice(i, 1);
       }
     }
