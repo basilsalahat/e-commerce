@@ -10,6 +10,7 @@
 * {
   font-family: "Kumbh Sans", sans-serif;
   box-sizing: border-box;
+  user-select: none;
 }
 body {
   width: 100vw;
@@ -22,4 +23,8 @@ body {
 }
 p {
   font-size: 16px;
+}
+.disabled {
+  cursor: not-allowed;
+  opacity: 30%;
 }
